@@ -1,0 +1,16 @@
+@font-face {
+      font-family: Inter;
+      font-weight: 500;
+      src: local(Inter), url('../fonts//inter-v12-cyrillic_latin-500.woff2') format('woff2'),
+            url('../fonts//inter-v12-cyrillic_latin-500.woff') format('woff');
+      /* woff испольузется для старых  браузеров */
+      /* local(Inter) значит, что если есть системный шрифт, то он подклиться */
+}
+
+
+@font-face {
+      font-family: Inter;
+      font-weight: 400;
+      src: local(Inter), url('../fonts//inter-v12-cyrillic_latin-regular.woff2') format('woff2'),
+            url('../fonts//inter-v12-cyrillic_latin-regular.woff') format('woff');
+}

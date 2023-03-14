@@ -1,0 +1,46 @@
+.footer {
+      margin-bottom: 40px;
+}
+
+.footer__container {
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+      /* max-content знаичт что столбец занмиает столько места, сколько емц надо*/
+      gap: 40px 126px;
+      grid-template-areas:
+            /* 2 строки, 3 столбца */
+            'logo social contacts'
+            'copyrigt .  developer'
+      ;
+      padding-top: 50px;
+      border-top: 2px solid #F8F8F8;
+
+}
+
+.footer__social {
+      /*грид элемент*/
+      grid-area: social;
+      /* выранвиевает грид элемент по горизинтали ячейки:*/
+      justify-self: end;
+
+      display: flex;
+      gap: 24px;
+      align-items: center;
+}
+
+
+.footer__contacts {
+      /*грид элемент*/
+      grid-area: contacts;
+}
+
+.footer___copyright {
+      /*грид элемент*/
+      grid-area: copyrigt;
+}
+
+
+.footer__developer {
+      /*грид элемент*/
+      grid-area: developer;
+}
