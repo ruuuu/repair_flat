@@ -1,6 +1,5 @@
-.footer {
-      margin-bottom: 40px;
-}
+.footer {}
+
 
 .footer__container {
       display: grid;
@@ -17,22 +16,40 @@
 
 }
 
+
+.footer__list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+}
+
+
 .footer__social {
       /*грид элемент*/
       grid-area: social;
       /* выранвиевает грид элемент по горизинтали ячейки:*/
       justify-self: end;
-
-      display: flex;
+      flex-direction: row;
       gap: 24px;
-      align-items: center;
+      padding-top: 8px;
+
 }
 
 
 .footer__contacts {
       /*грид элемент*/
       grid-area: contacts;
+      gap: 16px;
+      padding-top: 8px;
 }
+
+
+.footer__link--contact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+}
+
 
 .footer___copyright {
       /*грид элемент*/
@@ -43,4 +60,5 @@
 .footer__developer {
       /*грид элемент*/
       grid-area: developer;
+      gap: 8px;
 }
