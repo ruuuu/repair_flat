@@ -1,0 +1,38 @@
+.adventages {}
+
+
+.adventages__container {
+      display: flex;
+      gap: 70px;
+      padding-left: 50px;
+      padding-right: 50px;
+}
+
+.adventages__title {
+      flex-basis: 50%;
+      max-width: 480px;
+      display: flex;
+
+}
+
+.adventages__list {
+      flex-basis: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+
+}
+
+.adventages__item {
+      background-image: url('../img/star.svg');
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: 16px 16px;
+      padding-left: 32px;
+
+      font-size: 24px;
+      line-height: 31px;
+      text-transform: uppercase;
+
+}

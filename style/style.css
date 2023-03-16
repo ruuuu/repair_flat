@@ -17,6 +17,7 @@ ul {
 
 body {
       min-width: 320px;
+      /*меньше чем 320 px не будет*/
       font-family: 'Inter', sans-serif;
       /* sans-serif-запасной шрифт  */
       font-size: 16px;
@@ -46,6 +47,14 @@ img {
       height: auto;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+      margin: 0;
+}
 
 .button {
       display: inline-block;
@@ -85,6 +94,20 @@ p {
 
 
 .gray-block {
+      padding: 50px;
       background-color: #F8F8F8;
       border-radius: 12px;
+      min-height: 530px;
+
+      @media(max-width: 768px) {
+            padding: 30px;
+      }
+}
+
+
+.title {
+      font-weight: 500;
+      font-size: 44px;
+      line-height: 57px;
+      text-transform: uppercase;
 }

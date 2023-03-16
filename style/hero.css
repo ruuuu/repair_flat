@@ -3,28 +3,52 @@
 }
 
 
+.hero__container {
+      display: flex;
+      gap: 10px;
+}
+
+.hero__content {
+      /* базовый размер(до сужения и до увеличения): */
+      flex-basis: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+}
+
+
+.hero__title {
+      margin-bottom: 32px;
+}
+
+.hero__description {
+      margin-bottom: 32px;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+}
 
 
 
-.hero__container {}
+.hero__link {
+      /* флекс элемент прижмется к низу контенейра: */
+      margin-top: auto;
 
-.hero__content {}
+}
 
+.hero__slider-warpper {
+      flex-basis: 50%;
 
-
-.hero__title {}
-
-.hero__description {}
-
-
-
-.hero__link {}
-
-.hero__slider-warpper {}
+}
 
 
+.hero__image {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 12px;
 
-.hero__image {}
+}
 
 .hero__slider-btn {}
 
