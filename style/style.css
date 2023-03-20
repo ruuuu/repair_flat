@@ -1,12 +1,27 @@
 /* общие стли  */
+
+:root {
+      /* придумали переменную:  ширина слайда */
+      --width-slide: 590px;
+      /* придумали переменную: */
+      --width-block: calc(50% - 10px);
+      --gap: 10px;
+      /* у серого блока: */
+      --padding: 50px;
+
+}
+
+
 html {
       box-sizing: border-box;
 }
+
 
 * {
       box-sizing: inherit;
       /* для ненаследумого совйсова указываем inherit, чобы он унасделвася  */
 }
+
 
 ul {
       list-style: none;
@@ -25,8 +40,8 @@ body {
       font-weight: 400;
       color: #232020;
       background-color: #ffffff;
-
 }
+
 
 
 .container {
@@ -35,6 +50,7 @@ body {
       margin: 0 auto;
 }
 
+
 .link {
       text-decoration: none;
       /* наследует от родителя: */
@@ -42,10 +58,12 @@ body {
 
 }
 
+
 img {
       max-width: 100%;
       height: auto;
 }
+
 
 h1,
 h2,
@@ -55,6 +73,7 @@ h5,
 h6 {
       margin: 0;
 }
+
 
 .button {
       display: inline-block;
@@ -87,10 +106,10 @@ p {
 
 
 .gray-block {
-      padding: 50px;
+      min-height: 530px;
+      padding: var(--padding);
       background-color: #F8F8F8;
       border-radius: 12px;
-      min-height: 530px;
 
       @media(max-width: 768px) {
             padding: 30px;
@@ -103,4 +122,92 @@ p {
       font-size: 44px;
       line-height: 57px;
       text-transform: uppercase;
+}
+
+
+@media(max-width: 1240px) {
+      :root {
+            --padding: 30px;
+            --width-slide: 440px;
+            --height-slide: 440px;
+      }
+
+      .container {
+            max-width: 890px;
+      }
+
+      .section-offset {
+            padding-top: 30px;
+            padding-bottom: 30px;
+      }
+
+      .title {
+            font-weight: 300;
+            font-size: 34px;
+            line-height: 44px;
+      }
+
+      .gray-block {
+            min-height: 396px;
+      }
+}
+
+
+@media(max-width: 920px) {
+
+      :root {
+            --padding: 24px;
+
+            --width-slide: 311px;
+            --height-slide: 280px;
+      }
+
+      .container {
+            /* 630(кнтент) + padding-left(30px) + padding-rightt(30px): */
+            max-width: 690px;
+            padding: 0 30px;
+      }
+
+      .gray-block {
+            min-height: 280px;
+            padding: 24px;
+      }
+
+      .button {
+            padding: 10px 24px;
+            font-size: 14px;
+      }
+}
+
+
+
+@media(max-width: 560px) {
+      :root {
+            --padding: 20px;
+            --width-slide: 308px;
+            --height-slide: 276px;
+            --gap: 4px;
+      }
+
+      .container {
+            padding: 0 6px;
+      }
+
+
+      .title {
+            font-size: 24px;
+            line-height: 31px;
+
+      }
+
+      .gray-block {
+            min-height: 232px;
+            padding: 20px;
+      }
+
+      .button {
+            font-size: 12px;
+            line-height: 15px;
+      }
+
 }

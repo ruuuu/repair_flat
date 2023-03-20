@@ -14,3 +14,16 @@
       background-color: transparent;
       border: 1px solid #232020;
 }
+
+@media(max-width: 1240px) {}
+
+
+@media(max-width: 920px) {
+
+      .header__logo {
+            width: 124px;
+      }
+}
+
+
+@media(max-width: 560px) {}

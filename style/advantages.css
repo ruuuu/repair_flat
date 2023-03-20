@@ -36,3 +36,12 @@
       text-transform: uppercase;
 
 }
+
+
+@media(max-width: 1240px) {}
+
+
+@media(max-width: 920px) {}
+
+
+@media(max-width: 560px) {}

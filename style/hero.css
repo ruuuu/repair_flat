@@ -1,11 +1,4 @@
 .hero {
-      /* придумали переменную: */
-      --width-slide: 590px;
-      /* придумали переменную: */
-      --height-slide: 530px;
-      /* придумали переменную: */
-      --width-block: calc(50% - 10px);
-      --gap: 10px;
       padding-top: 0;
       /* чтоб гор скролл не появлялся, чтоб слайд обрезался : */
       overflow: hidden;
@@ -16,7 +9,6 @@
 .hero__container {
       /* относительно этого элемента позиционируем .hero__slider-block: */
       position: relative;
-
       display: flex;
       gap: var(--gap);
 }
@@ -34,10 +26,9 @@
 .hero__slider-block {
       position: absolute;
       left: calc(50% + var(--gap) / 2);
-
+      /* Где 2 число видимых слайдов: */
       width: calc(((var(--width-block) + var(--gap)) * 2) - var(--gap));
-      /* Где 2 число видимых слайдов */
-
+      height: 100%;
 }
 
 
@@ -65,7 +56,7 @@
 .hero__slider {
       /* стрелкии позиционировать будем относительно этого: */
       position: relative;
-
+      height: 100%;
 }
 
 
@@ -75,7 +66,8 @@
 .hero__image {
       /* используем ввденые  перменные: */
       width: var(--width-slide);
-      height: var(--height-slide);
+      max-width: 100%;
+      height: 100%;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -85,8 +77,9 @@
 
 .hero__arrow {
       position: absolute;
-      bottom: 50px;
-      left: 448px;
+      bottom: var(--padding);
+      left: calc(var(--width-slide) - var(--padding));
+      transform: translateX(-100%);
       z-index: 3;
       display: flex;
       gap: 8px;
@@ -114,4 +107,74 @@
 
 .hero__slider-btn--next {
       background-image: url('../img/arrow-right.svg')
+}
+
+
+@media(max-width: 1240px) {
+
+      .hero__title {
+            margin-bottom: 24px;
+      }
+
+      .hero__description {
+            margin-bottom: 98px;
+      }
+}
+
+
+@media(max-width: 920px) {
+
+      .hero__container {
+            flex-direction: column;
+      }
+
+      .hero__content {
+            width: 100%;
+      }
+
+      .hero__slider-block {
+            position: static;
+            height: 280px;
+      }
+
+      .hero__title {
+            max-width: 410px;
+            margin-bottom: 16px;
+      }
+
+      .hero__description {
+            max-width: 410px;
+            margin-bottom: 50px;
+            font-size: 14px;
+            line-height: 21px;
+      }
+
+      .hero__arrow {
+            left: auto;
+            right: var(--padding);
+            transform: none;
+      }
+
+}
+
+
+@media(max-width: 560px) {
+
+      .hero__title {
+            font-size: 24px;
+            line-height: 31px;
+      }
+
+      .hero__description {
+            margin-bottom: 24px;
+            font-size: 12px;
+            line-height: 18px;
+      }
+
+      .hero__slider-block {
+            max-width: var(--width-slide);
+            margin: 0 auto;
+      }
+
+
 }
