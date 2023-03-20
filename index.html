@@ -13,8 +13,11 @@
       <link rel="stylesheet" href="style/hero.css">
       <link rel="stylesheet" href="style/advantages.css">
       <link rel="stylesheet" href="style/calc.css">
-
       <link rel="stylesheet" href="style/footer.css">
+      <!-- слайдер swiper -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
+      <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -38,21 +41,46 @@
                               <a href="#calc" class="button link hero__link" href="">Рассчитать&nbspстоимость</a>
                         </div>
 
-                        <div class="hero__slider-warpper">
+                        <div class="hero__slider-block">
                               <!--swiper слайдер буделм юзать:-->
-                              <div class="filling">
-                                    <div class="filling">
+                              <div class="hero__slider swiper">
+                                    <div class="hero__slider-wrapper swiper-wrapper">
                                           <!--слайд 1:-->
-                                          <div class="filling hero__image"
-                                                style="background-image: url('./img/slide1.jpg');"></div>
+                                          <div class="swiper-slide">
+                                                <div class="hero__image"
+                                                      style="background-image: url('./img/slide1.jpg');">
+                                                </div>
+                                          </div>
+
                                           <!--слайд 2:-->
-                                          <div class="filling hero__image"></div>
+                                          <div class="swiper-slide">
+                                                <div class="hero__image"
+                                                      style="background-image: url('./img/slide2.jpg');"></div>
+                                          </div>
+
                                           <!--слайд 3:-->
-                                          <div class="filling hero__image"></div>
+                                          <div class="swiper-slide">
+                                                <div class="hero__image"
+                                                      style="background-image: url('./img/slide3.jpg');"></div>
+                                          </div>
+
+                                          <!--слайд 4:-->
+                                          <div class="swiper-slide">
+                                                <div class="hero__image"
+                                                      style="background-image: url('./img/slide4.jpg');"></div>
+                                          </div>
+
+                                          <!--слайд 5:-->
+                                          <div class="swiper-slide">
+                                                <div class="hero__image"
+                                                      style="background-image: url('./img/slide5.jpg');"></div>
+                                          </div>
                                     </div>
 
-                                    <button class="hero__slider-btn hero__slider-btn--prev"></button>
-                                    <button class="hero__slider-btn hero__slider-btn--next"></button>
+                                    <div class="hero__arrow">
+                                          <button class="hero__slider-btn hero__slider-btn--prev"></button>
+                                          <button class="hero__slider-btn hero__slider-btn--next"></button>
+                                    </div>
                               </div>
                         </div>
                   </div>

@@ -1,19 +1,43 @@
 .hero {
+      /* придумали переменную: */
+      --width-slide: 590px;
+      /* придумали переменную: */
+      --height-slide: 530px;
+      /* придумали переменную: */
+      --width-block: calc(50% - 10px);
+      --gap: 10px;
       padding-top: 0;
+      /* чтоб гор скролл не появлялся, чтоб слайд обрезался : */
+      overflow: hidden;
+
 }
 
 
 .hero__container {
+      /* относительно этого элемента позиционируем .hero__slider-block: */
+      position: relative;
+
       display: flex;
-      gap: 10px;
+      gap: var(--gap);
 }
 
+
 .hero__content {
-      /* базовый размер(до сужения и до увеличения): */
-      flex-basis: 50%;
+      width: var(--width-block);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
+}
+
+
+.hero__slider-block {
+      position: absolute;
+      left: calc(50% + var(--gap) / 2);
+
+      width: calc(((var(--width-block) + var(--gap)) * 2) - var(--gap));
+      /* Где 2 число видимых слайдов */
+
 }
 
 
@@ -21,7 +45,10 @@
       margin-bottom: 32px;
 }
 
+
 .hero__description {
+      /* флекс элемент */
+      flex-grow: 1;
       margin-bottom: 32px;
       font-size: 16px;
       line-height: 24px;
@@ -29,29 +56,62 @@
 }
 
 
-
 .hero__link {
       /* флекс элемент прижмется к низу контенейра: */
       margin-top: auto;
+}
+
+
+.hero__slider {
+      /* стрелкии позиционировать будем относительно этого: */
+      position: relative;
 
 }
 
-.hero__slider-warpper {
-      flex-basis: 50%;
 
-}
+.hero__slider-wrapper {}
 
 
 .hero__image {
+      /* используем ввденые  перменные: */
+      width: var(--width-slide);
+      height: var(--height-slide);
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
       border-radius: 12px;
-
 }
 
-.hero__slider-btn {}
 
-.hero__slider-btn--prev {}
+.hero__arrow {
+      position: absolute;
+      bottom: 50px;
+      left: 448px;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+}
 
-.hero__slider-btn--next {}
+
+.hero__slider-btn {
+      display: block;
+      width: 42px;
+      height: 42px;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      border: none;
+      background-color: #FFC700;
+      cursor: pointer;
+}
+
+
+.hero__slider-btn--prev {
+      /* transform: rotate(180deg);  на 180 гра повернет стрелку*/
+      background-image: url('../img/arrow-left.svg')
+}
+
+
+.hero__slider-btn--next {
+      background-image: url('../img/arrow-right.svg')
+}
