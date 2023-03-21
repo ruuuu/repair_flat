@@ -41,7 +41,33 @@
 @media(max-width: 1240px) {}
 
 
-@media(max-width: 920px) {}
+@media(max-width: 920px) {
+      .adventages__container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+      }
+
+      .adventages__list {
+            gap: 16px;
+      }
+
+      .adventages__item {
+            font-size: 16px;
+            line-height: 21px;
+      }
+}
 
 
-@media(max-width: 560px) {}
+@media(max-width: 560px) {
+
+      .adventages__title {
+            font-size: 24px;
+            line-height: 31px;
+      }
+
+      .adventages__item {
+            font-size: 14px;
+            line-height: 18px;
+      }
+}

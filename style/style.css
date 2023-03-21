@@ -4,7 +4,7 @@
       /* придумали переменную:  ширина слайда */
       --width-slide: 590px;
       /* придумали переменную: */
-      --width-block: calc(50% - 10px);
+      --width-block: calc(50% - var(--gap) / 2);
       --gap: 10px;
       /* у серого блока: */
       --padding: 50px;

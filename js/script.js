@@ -33,3 +33,25 @@ new Swiper('.hero__slider', {
       }
 
 });
+
+
+// калькулятор:
+//.js-calc-form
+// .js-square
+// .
+const calcForm = document.querySelector('.js-calc-form');
+const totalSquare = document.querySelector('.js-square');
+const totalPrice = document.querySelector('.js-total-price');
+
+calcForm.addEventListener('submit', (evt) => {
+      evt.preventDefault();                     // чтобы страница не перезагружалась после отправки формы
+      console.log(calcForm.width.value);        // обращаеимся к значеию атрибута name у поля
+      console.log(calcForm.length.value);
+      console.log(calcForm.tariff.value);
+
+      if (calcForm.width.value && calcForm.length.value > 0) {
+            const square = calcForm.width.value * calcForm.length.value;
+            totalSquare.textContent = square;
+      }
+
+});
