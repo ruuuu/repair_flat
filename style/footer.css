@@ -67,7 +67,32 @@
 @media(max-width: 1240px) {}
 
 
-@media(max-width: 920px) {}
+@media(max-width: 920px) {
+
+      .footer__logo {
+            width: 124px;
+            height: 29px;
+      }
+}
 
 
-@media(max-width: 560px) {}
+@media(max-width: 560px) {
+
+      .footer__container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            font-size: 14px;
+            line-height: 21px;
+      }
+
+      .footer___copyright {
+            order: 1;
+      }
+
+
+      .footer__developer {
+            order: 0;
+      }
+
+}
