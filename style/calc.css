@@ -169,6 +169,7 @@
 }
 
 .calc__result-wrapper {
+      display: none;
       flex-basis: 303px;
       min-height: 112px;
       padding: 24px;

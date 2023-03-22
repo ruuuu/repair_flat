@@ -36,12 +36,18 @@ new Swiper('.hero__slider', {
 
 
 // калькулятор:
-//.js-calc-form
-// .js-square
-// .
+
 const calcForm = document.querySelector('.js-calc-form');
 const totalSquare = document.querySelector('.js-square');
 const totalPrice = document.querySelector('.js-total-price');
+const calcResultWrapper = document.querySelector('.calc__result-wrapper');
+
+const tariff = {
+      economy: 550,
+      comfort: 1400,
+      premium: 2700,
+};
+
 
 calcForm.addEventListener('submit', (evt) => {
       evt.preventDefault();                     // чтобы страница не перезагружалась после отправки формы
@@ -50,8 +56,15 @@ calcForm.addEventListener('submit', (evt) => {
       console.log(calcForm.tariff.value);
 
       if (calcForm.width.value && calcForm.length.value > 0) {
+            calcResultWrapper.style.display = 'block';
+
             const square = calcForm.width.value * calcForm.length.value;
-            totalSquare.textContent = square;
+            totalSquare.textContent = `${square} кв м`;
+
+            const price = tariff[calcForm.tariff.value] * square;
+            totalPrice.textContent = `${price} руб`;
+
+
       }
 
 });
