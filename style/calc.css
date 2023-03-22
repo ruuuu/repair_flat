@@ -113,8 +113,6 @@
       left: 0;
       right: 0;
       bottom: 0;
-      width: 24px;
-      height: 24px;
       border-radius: 50%;
       background-color: #FFFFFF;
       border: 1px solid #E4E4E4;
@@ -124,13 +122,14 @@
       /* псевдоэлемнет, черная точка */
       content: '';
       position: absolute;
+      /* чтоб отцентровалсь черная точка, след 3 свойства: */
       top: 50%;
       left: 50%;
+       transform: translate(-50%, -50%);
 
       width: 8px;
       height: 8px;
-      /* чтоб отцентровалсь черная точка: */
-      transform: translate(-50%, -50%);
+     
 
       border-radius: 50%;
       background-color: #000000;
