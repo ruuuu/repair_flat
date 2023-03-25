@@ -17,6 +17,8 @@ new Swiper('.hero__slider', {
             prevEl: '.hero__slider-btn--prev',
       },
 
+      disableOnInteraction: true,  // не тключать автоплей когда повзимдействием со садйером
+
       autoplay: { //  слвдйер автоматически будет крутиться
             delay: 3000, // чеерз каждые 3 секунды меняется слайд
       },
@@ -41,6 +43,8 @@ const calcForm = document.querySelector('.js-calc-form');
 const totalSquare = document.querySelector('.js-square');
 const totalPrice = document.querySelector('.js-total-price');
 const calcResultWrapper = document.querySelector('.calc__result-wrapper');
+const submitBtn = document.querySelector('.js-submit'); // кнопка Рассчитать
+
 
 const tariff = {
       economy: 550,
@@ -49,11 +53,24 @@ const tariff = {
 };
 
 
+
+calcForm.addEventListener('input', (evt) => {
+
+      if (calcForm.width.value && calcForm.length.value > 0) {          // если оба поля зааполнены
+            submitBtn.disabled=false;                                   // раздизейбливаем кнпоку
+      }
+      else{
+            submitBtn.disabled=true;
+      }
+});
+
+
+
 calcForm.addEventListener('submit', (evt) => {
       evt.preventDefault();                     // чтобы страница не перезагружалась после отправки формы
-      console.log(calcForm.width.value);        // обращаеимся к значеию атрибута name у поля
-      console.log(calcForm.length.value);
-      console.log(calcForm.tariff.value);
+      // console.log(calcForm.width.value);        // обращаеимся к значеию атрибута name  у поля: calcForm.width  где name=width
+      //console.log(calcForm.length.value);
+      // console.log(calcForm.tariff.value);
 
       if (calcForm.width.value && calcForm.length.value > 0) {
             calcResultWrapper.style.display = 'block';
@@ -63,8 +80,6 @@ calcForm.addEventListener('submit', (evt) => {
 
             const price = tariff[calcForm.tariff.value] * square;
             totalPrice.textContent = `${price} руб`;
-
-
       }
 
 });

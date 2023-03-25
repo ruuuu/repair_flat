@@ -99,6 +99,20 @@
 }
 
 
+.hero__slider-btn:hover{
+      background-color: #FFD952;
+}
+
+
+.hero__slider-btn:focus{
+      background-color: #DE7B00;
+}
+      
+.hero__slider-btn:active{
+      background-color: #DE7B00;
+}
+
+
 .hero__slider-btn--prev {
       /* transform: rotate(180deg);  на 180 гра повернет стрелку*/
       background-image: url('../img/arrow-left.svg')

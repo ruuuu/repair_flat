@@ -55,7 +55,15 @@ body {
       text-decoration: none;
       /* наследует от родителя: */
       color: inherit;
+      transition: color 0.3s  ease-in-out, background-color 0.3s ease-in-out; /* color  и background-color  будет меняться плавно в течение 0.3 */
+}
 
+.link:hover{
+      color: #FFD952;
+}
+
+.link:focus{
+      
 }
 
 
@@ -84,6 +92,44 @@ h6 {
       background-color: #FFC700;
       border: none;
       cursor: pointer;
+      outline: none;
+     
+}
+
+
+.button:hover{
+      background-color: #FFD952;
+      border-color: #FFD952;
+}
+
+
+
+.button:focus-visible{ /* при нажатии на кнопку */
+      border: 1px solid #9E7B00;
+}
+
+
+.button:active{
+      transform: translate(2px, 2px); /* сдвигаем на 2px вправо и на 2 px вниз */
+}
+
+
+.button:disabled{
+      pointer-events: none; /* чтоб нельзя было кликнуть на кнпоку */
+      background-color: #E0E0E0;
+      border-color: #E0E0E0;
+      color: #898989;
+}
+
+
+.button--o {
+      background-color: transparent;
+      border: 1px solid #232020;
+}
+
+
+.button--o:focus-visible{
+      border: 1px solid #FFC700;
 }
 
 
