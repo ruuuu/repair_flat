@@ -85,10 +85,43 @@ calcForm.addEventListener('submit', (evt) => {
 });
 
 
-// мод окно:
-const modalController = ({modal,  btnOpen, btnClose, time=300}) => { //  декструткризация,
 
-      const buttonElems = document.querySelectorAll( btnOpen);      // кнпоки по наатию на которую откроется мод окно
+
+const scrollController = {
+      scrollPosition: 0,
+
+
+      disabledScroll() {  // убираем скролл, чтоб станица не скроллилась по вертикали
+        scrollController.scrollPosition = window.scrollY;  // запоминаем где находится скролл
+
+        document.body.style.cssText = `
+          overflow: hidden;
+          position: fixed;
+          top: -${scrollController.scrollPosition}px;
+          left: 0;
+          height: 100vh;
+          width: 100vw;
+          padding-right: ${window.innerWidth - document.body.offsetWidth}px; 
+        `;
+
+        document.documentElement.style.scrollBehavior = 'unset';        // убираем плавную прокрутку
+      },
+
+
+      enabledScroll() {  //  отображение скролла, чтобы страница скролилась (по верткали)
+        document.body.style.cssText = '';
+
+        window.scroll({ top: scrollController.scrollPosition });
+
+        document.documentElement.style.scrollBehavior = '';
+      },
+};
+
+
+// мод окно:
+const modalController = ({ modal,  btnOpen, btnClose, time=300 }) => { //  декструткризация
+
+      const buttonElems = document.querySelectorAll(btnOpen);      // кнпоки по нажатию на которую откроется мод окно
       const modalElem = document.querySelector(modal);             // оверлей(overlay) с  мод окном
   
       // начальгные стили окна:
@@ -96,37 +129,40 @@ const modalController = ({modal,  btnOpen, btnClose, time=300}) => { //  дек�
           display: flex;
           visibility: hidden;
           opacity: 0;
-          transition: opacity ${time}ms easy-in-out;
+          transition: opacity ${time}ms easy-in-out; 
       `;
   
   
-      // отмкртыие модалки:
+      // открыnие модалки:
       const openModal = () => {
           modalElem.style.visibility = 'visible';                 //  показваем окно
           modalElem.style.opacity = 1;                            // у окна убираем прозрачность(чтоыб окно было видимым
-          // window это объект браузера:
-  
+          
+      // window это объект браузера:
           window.addEventListener('keydown', closeModal);         // собыите keydown это событие нажатия клавиши
+          scrollController.disabledScroll();                      // отключаем скролл
       };
   
   
+
       const closeModal = (evt) => {            //  event нужен чтоы определить на какой элемент было нажатие,  event создется при  наступлении события
-          const target = evt.target;          // получим элемент на котрый нажали
+          const target = evt.target;            // получим элемент на котрый нажали
   
           if (target === modalElem || (btnClose && target.closest(btnClose)) || evt.code ==='Escape') {           // если нажали на modalElem или если у target или  его родителя  есть класс .modal__close
-              modalElem.style.opacity = 0;
+              modalElem.style.opacity = 0;      //  окно не будет отображаться
   
               setTimeout(() => {
                   modalElem.style.visibility = 'hidden';             //  показваем окно
-              }, time); //  через 300 мс переданая фукния запустится
+                  scrollController.enabledScroll();                  // вклюаем скролл
+            }, time); //  через 300 мс переданая фукния запустится
   
               window.removeEventListener('keydown', closeModal);          // снимаем обработчик события, чтоыб при каждом нажатии на escape, closeModal не выызвалась, выызваем ее только если нажали на клавишу  прио ткрытом окне
           }
       };
   
   
-      buttonElems.forEach((buttonElem) => { // на каждую кнпку навешиваем событие клика
-          buttonElem.addEventListener('click', openModal);    //   как тлоько произодйет клик, так запутсится функция
+      buttonElems.forEach((buttonElem) => {                       // на каждую кнпку навешиваем событие клика
+          buttonElem.addEventListener('click', openModal);        //   как тлоько произодйет клик, так запутсится функция
       });
   
   
@@ -136,19 +172,13 @@ const modalController = ({modal,  btnOpen, btnClose, time=300}) => { //  дек�
   
   
   
-//   modalController({
-//       modal: '.modal1', //переаем селектор модалки
-//       btnOpen:  '.section__button1', //  селктор кнпоки откытия модалки
-//       btnClose:'.modal__close', //  селктор кнпоки закрытия модалки
-//       time: 1000,
-//   }); // вызов, передаем объект
+  modalController({
+      modal: '.modal', //переаем селектор модалки
+      btnOpen:  '.js-order', //  селктор кнпоки откытия модалки
+      btnClose:'.modal__close', //  селктор кнпоки закрытия модалки
+      time: 1000,
+  }); // вызов, передаем объект
   
   
+
   
-  
-//   modalController({
-//       modal: '.modal2', //переаем селектор модалки
-//       btnOpen:  '.section__button2', //  селктор кнпоки откытия модалки
-//       btnClose:'.modal__close', //  селктор кнпоки закрытия модалки
-  
-//   }); // вызов, передаем объект
