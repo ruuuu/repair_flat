@@ -17,7 +17,7 @@ new Swiper('.hero__slider', {
             prevEl: '.hero__slider-btn--prev',
       },
 
-      disableOnInteraction: true,  // не тключать автоплей когда повзимдействием со садйером
+      disableOnInteraction: false,  // не тключать автоплей когда повзимдействием со садйером
 
       autoplay: { //  слвдйер автоматически будет крутиться
             delay: 3000, // чеерз каждые 3 секунды меняется слайд
@@ -83,3 +83,72 @@ calcForm.addEventListener('submit', (evt) => {
       }
 
 });
+
+
+// мод окно:
+const modalController = ({modal,  btnOpen, btnClose, time=300}) => { //  декструткризация,
+
+      const buttonElems = document.querySelectorAll( btnOpen);      // кнпоки по наатию на которую откроется мод окно
+      const modalElem = document.querySelector(modal);             // оверлей(overlay) с  мод окном
+  
+      // начальгные стили окна:
+      modalElem.style.cssText = `
+          display: flex;
+          visibility: hidden;
+          opacity: 0;
+          transition: opacity ${time}ms easy-in-out;
+      `;
+  
+  
+      // отмкртыие модалки:
+      const openModal = () => {
+          modalElem.style.visibility = 'visible';                 //  показваем окно
+          modalElem.style.opacity = 1;                            // у окна убираем прозрачность(чтоыб окно было видимым
+          // window это объект браузера:
+  
+          window.addEventListener('keydown', closeModal);         // собыите keydown это событие нажатия клавиши
+      };
+  
+  
+      const closeModal = (evt) => {            //  event нужен чтоы определить на какой элемент было нажатие,  event создется при  наступлении события
+          const target = evt.target;          // получим элемент на котрый нажали
+  
+          if (target === modalElem || (btnClose && target.closest(btnClose)) || evt.code ==='Escape') {           // если нажали на modalElem или если у target или  его родителя  есть класс .modal__close
+              modalElem.style.opacity = 0;
+  
+              setTimeout(() => {
+                  modalElem.style.visibility = 'hidden';             //  показваем окно
+              }, time); //  через 300 мс переданая фукния запустится
+  
+              window.removeEventListener('keydown', closeModal);          // снимаем обработчик события, чтоыб при каждом нажатии на escape, closeModal не выызвалась, выызваем ее только если нажали на клавишу  прио ткрытом окне
+          }
+      };
+  
+  
+      buttonElems.forEach((buttonElem) => { // на каждую кнпку навешиваем событие клика
+          buttonElem.addEventListener('click', openModal);    //   как тлоько произодйет клик, так запутсится функция
+      });
+  
+  
+      modalElem.addEventListener('click', closeModal);
+  };
+  
+  
+  
+  
+//   modalController({
+//       modal: '.modal1', //переаем селектор модалки
+//       btnOpen:  '.section__button1', //  селктор кнпоки откытия модалки
+//       btnClose:'.modal__close', //  селктор кнпоки закрытия модалки
+//       time: 1000,
+//   }); // вызов, передаем объект
+  
+  
+  
+  
+//   modalController({
+//       modal: '.modal2', //переаем селектор модалки
+//       btnOpen:  '.section__button2', //  селктор кнпоки откытия модалки
+//       btnClose:'.modal__close', //  селктор кнпоки закрытия модалки
+  
+//   }); // вызов, передаем объект
