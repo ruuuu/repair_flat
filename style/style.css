@@ -45,16 +45,14 @@ body {
 
 
 .container {
-      /* ширина контента */
-      max-width: 1190px;
+      max-width: 1190px; /* ширина контента */
       margin: 0 auto;
 }
 
 
-.link {
+.link { /* a */
       text-decoration: none;
-      /* наследует от родителя: */
-      color: inherit;
+      color: inherit; /* наследует от родителя */
       transition: color 0.3s  ease-in-out, background-color 0.3s ease-in-out; /* color  и background-color  будет меняться плавно в течение 0.3 */
 }
 
@@ -93,7 +91,6 @@ h6 {
       border: none;
       cursor: pointer;
       outline: none;
-     
 }
 
 

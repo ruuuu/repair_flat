@@ -207,6 +207,14 @@
       line-height: 24px;
 }
 
+.calc__order{
+      display: none;
+}
+
+.calc__order--show{
+      display: inline-block;
+}
+
 
 @media(max-width: 1240px) {
       .calc__content {}
@@ -232,8 +240,7 @@
             padding: 0 16px;
       }
 
-
-
+      
       .calc__label-radio {
             font-size: 14px;
             line-height: 21px;

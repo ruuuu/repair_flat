@@ -122,5 +122,14 @@
       line-height: 0;
       background-color: transparent;
       border:0;
+}
+
+
+.modal__input-error{  /* класс котрый добвил JustValidate - блок куда будут выводиться ошибки */  
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-size: 10px;
+      
 
 }

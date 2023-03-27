@@ -50,6 +50,7 @@
 .hero__link {
       /* флекс элемент прижмется к низу контенейра: */
       margin-top: auto;
+      text-decoration: none;
 }
 
 

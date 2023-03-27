@@ -43,7 +43,9 @@ const calcForm = document.querySelector('.js-calc-form');
 const totalSquare = document.querySelector('.js-square');
 const totalPrice = document.querySelector('.js-total-price');
 const calcResultWrapper = document.querySelector('.calc__result-wrapper');
-const submitBtn = document.querySelector('.js-submit'); // кнопка Рассчитать
+const submitBtn = document.querySelector('.js-submit');           // кнопка Рассчитать
+const calcOrder = document.querySelector('.calc__order');       // кнопка Заказать
+
 
 
 const tariff = {
@@ -71,9 +73,10 @@ calcForm.addEventListener('submit', (evt) => {
       // console.log(calcForm.width.value);        // обращаеимся к значеию атрибута name  у поля: calcForm.width  где name=width
       //console.log(calcForm.length.value);
       // console.log(calcForm.tariff.value);
-
+      
       if (calcForm.width.value && calcForm.length.value > 0) {
             calcResultWrapper.style.display = 'block';
+            calcOrder.classList.add('calc__order--show');
 
             const square = calcForm.width.value * calcForm.length.value;
             totalSquare.textContent = `${square} кв м`;
@@ -180,5 +183,72 @@ const modalController = ({ modal,  btnOpen, btnClose, time=300 }) => { //  де�
   }); // вызов, передаем объект
   
   
+// валидация полей: 
+const phone = document.getElementById("phone"); 
+const imPhone = new Inputmask("+7(999)999-99-99");  // уставнвливаем маску на поле Телефон
+console.log('объект ', imPhone);
+imPhone.mask(phone);
 
-  
+
+const validator = new JustValidate('.modal__form',
+{
+      errorLabelCssClass: 'modal__input-error',
+      errorLabelStyle: {
+            color: '#FFC700',
+      }
+}); // в JustValidate уже встроена отправка данных формы на сервер
+
+
+validator.addField('#name', [                      // валидация  для поля Имя
+      {
+            rule: 'required',                   // обязательное поле
+            errorMessage: 'Укажите ваше имя'
+      },
+      {
+            rule: 'minLength',
+            value: 3,
+            errorMessage: 'Имя должно состоять не менее 3 символов'
+      },
+      {
+            rule: 'maxLength',
+            value: 15,
+            errorMessage: 'Имя должно состоять не более 15 символов'
+      },
+]);
+
+
+validator.addField('#phone', [                          // валидация для поля Телефон
+      {
+            rule: 'required',
+            errorMessage: 'Укажите ваш телефон'
+      },
+      {
+            validator: value => {  // validator -это название функции, принмиает телефон котрый ввели в поле
+                  const number = phone.inputmask.unmaskedvalue();
+                  return number.length === 10;
+            },
+            errorMessage: 'телефон некорректный'      
+      }
+]);
+
+
+// отправка данных на сервер:
+validator.onSuccess((event) => {  // если валидация прошла успешно то запустится переданная функция
+      const form = event.currentTarget;
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                  name: form.name.value,   // форма.значение атрибута name у поля
+                  phone: form.phone.value,
+            }),
+            headers: {
+                  'Content-type': 'application/json; charset=UTF-8',
+            },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+            form.reset();  // очищаем поля формы
+            alert(`спасибо мы с вами свяжемся!  ВАша заявка под номером ${data.id}`);
+      })
+
+});

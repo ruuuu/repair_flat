@@ -10,7 +10,12 @@
       <link rel="preload" href="./fonts/inter-v12-cyrillic_latin-500.woff2" as="font" crossorigin>
       <link rel="preload" href="./fonts/inter-v12-cyrillic_latin-regular.woff2" as="font" crossorigin>
 
+      <!-- library: -->
       <link rel="stylesheet" href="style/normalize.css">
+      <!-- слайдер swiper: -->
+      <link rel="stylesheet" href="./style/swiper-bundle.min.css" />
+
+      <!-- custom styles: -->
       <link rel="stylesheet" href="style/fonts.css">
       <link rel="stylesheet" href="style/style.css">
       <link rel="stylesheet" href="style/header.css">
@@ -19,10 +24,15 @@
       <link rel="stylesheet" href="style/calc.css">
       <link rel="stylesheet" href="style/footer.css">
       <link rel="stylesheet" href="style/modal.css">
-      <!-- слайдер swiper: -->
-      <link rel="stylesheet" href="./style/swiper-bundle.min.css" />
-      <script src="./js/swiper-bundle.min.js" defer></script>
-      <script src="js/script.js" defer></script>
+      
+      <!-- scripts library: -->
+      <script src="./js/swiper-bundle.min.js" defer></script><!-- скачали файл свайпер слайдера и подключили его -->
+      <script src="./js/just-validate.production.min.js" defer></script><!-- нужен для вадилации полей, скачали файл библиотеки для валидации и подключили его -->
+      <script src="./js/inputmask.min.js" defer></script>  <!-- нужен для установки маски для полей, скачали файл https://robinherbots.github.io/Inputmask/#/documentation  и подключили его -->
+
+      <!-- user scripts: -->
+      <script src="js/script.js" defer></script><!-- defer чтобы скрипты скачивались параллельно с загрузкой страницы -->
+      
 </head>
 
 <body>
@@ -43,7 +53,7 @@
                               <p class="hero__description">Устанавливаем теплые полы в&nbsp;квартирах, офисах
                                     и&nbsp;загородных домах</p>
                               <!-- href="#calc" calc это id  у section, он ниже. При нажатии на эту кнопку, перенест на секцию c id=calc-->
-                              <a href="#calc" class="button link hero__link" href="">Рассчитать&nbspстоимость</a>
+                              <a href="#calc" class="button hero__link" href="">Рассчитать&nbspстоимость</a>
                         </div>
 
                         <div class="hero__slider-block">
@@ -147,6 +157,7 @@
                                     </fieldset>
 
                                     <button class="button calc__submit js-submit" type="submit" disabled>Рассчитать</button>
+                                    <button class="button calc__order button--o js-order">Заказать</button>
                               </form>
                         </div>
 
@@ -250,16 +261,16 @@
                                     <fieldset class="calc__fieldset calc__fieldset--size">
                                           <label class="modal__wrapper-input">
                                                 <span class="modal__text"> Имя </span>
-                                                <input class="modal__input" type="text" name="name" id="name" required>
+                                                <input class="modal__input" type="text" name="name" id="name">
                                           </label>
 
                                           <label class="modal__wrapper-input">
                                                 <span class="modal__text"> Телефон </span>
-                                                <input class="modal__input" type="tel" name="phone" required><!--  type="tel чтобы клавиатура на телефоне открываасль цтфровая, а не буквенная -->
+                                                <input class="modal__input" type="tel" name="phone" id="phone"><!--  type="tel чтобы клавиатура на телефоне открываасль цтфровая, а не буквенная -->
                                           </label>
                                     </fieldset>
 
-                                    <button class="button modal__submit" type="submit" disabled>Отправить</button>
+                                    <button class="button modal__submit" type="submit">Отправить</button>
                               </form>
                         </div>          
                   </div>
